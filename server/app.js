@@ -3,9 +3,19 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 
+// this line convert json into object
+app.use(express.json());
+
+// path where our env are defined
 dotenv.config({ path: './config.env' });
+
+// our connection code
 require('./db/conn');
+
 const PORT = process.env.PORT;
+
+app.use(require('./router/auth'))
+
 
 // Middleware
 const middleware = (req, res, next) => {
