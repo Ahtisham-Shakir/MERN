@@ -70,6 +70,10 @@ router.post('/signin', async (req, res) => {
         if (userLogin) {
             const isMatch = await bcrypt.compare(password, userLogin.password);
             const token = userLogin.generateAuthToken()
+            res.cookie('jwtoken', token, {
+                expires: new Date(Date.now() + 25892000000),
+                httpOnly: true
+            })
             if(!isMatch){
                 return res.status(400).json({ error: "invalid details pass" });
             }else{
