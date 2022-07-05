@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // connection to the database
 require('../db/conn');
@@ -68,6 +69,7 @@ router.post('/signin', async (req, res) => {
 
         if (userLogin) {
             const isMatch = await bcrypt.compare(password, userLogin.password);
+            const token = userLogin.generateAuthToken()
             if(!isMatch){
                 return res.status(400).json({ error: "invalid details pass" });
             }else{
