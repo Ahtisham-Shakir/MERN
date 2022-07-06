@@ -5,3 +5,10 @@
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
+
+.home-page{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    height: 80vh;
+}
