@@ -1,1 +1,7 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+
+.box{
+    border-radius: 5px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
